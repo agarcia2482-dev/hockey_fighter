@@ -65,7 +65,8 @@ export class App {
     if (this.scene) { this.scene.destroy(); this.scene = null; }
     clear(this.screen);
     this.screen.appendChild(node);
-    this.screen.scrollTop = 0;
+    // .app is the scroll container — reset it to the top on every navigation.
+    this.root.scrollTop = 0;
   }
 
   _toast(msg) {
