@@ -1,0 +1,18 @@
+# Dependencies (none required, but just in case)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Build / temp
+dist/
+.cache/
+*.tmp

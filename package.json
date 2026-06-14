@@ -1,0 +1,21 @@
+{
+  "name": "hockey-fighter",
+  "version": "0.1.0",
+  "description": "Rock 'em Sock 'em style hockey fighting game — a zero-dependency, browser-based vertical slice. No NHL affiliation; all teams, players, and logos are fictional.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "serve": "python3 -m http.server 8080",
+    "test": "node --test",
+    "preview": "node tools/preview.mjs"
+  },
+  "keywords": [
+    "game",
+    "canvas",
+    "pixel-art",
+    "hockey",
+    "vertical-slice"
+  ],
+  "license": "MIT"
+}
