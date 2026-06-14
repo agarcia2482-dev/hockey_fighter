@@ -16,3 +16,6 @@ Thumbs.db
 dist/
 .cache/
 *.tmp
+
+# Packaged uploads (regenerate with `npm run package`)
+*.zip

@@ -8,7 +8,8 @@
     "start": "python3 -m http.server 8080",
     "serve": "python3 -m http.server 8080",
     "test": "node --test",
-    "preview": "node tools/preview.mjs"
+    "preview": "node tools/preview.mjs",
+    "package": "rm -f hockey-fighter-itch.zip && zip -r -q hockey-fighter-itch.zip index.html css js && echo 'Built hockey-fighter-itch.zip — upload to itch.io'"
   },
   "keywords": [
     "game",

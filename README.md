@@ -36,6 +36,31 @@ npx serve .
 Open **http://localhost:8080** and start swinging. Progress (roster + coins) is
 saved in your browser’s `localStorage`.
 
+## Publish to itch.io
+
+The game is a self-contained HTML5 build (relative paths, no server code, no
+external requests), so it drops straight onto itch.io.
+
+```bash
+npm run package      # builds hockey-fighter-itch.zip (index.html at the root)
+```
+
+Then on itch.io:
+
+1. **Create / edit project → Kind of project: `HTML`**.
+2. **Upload** `hockey-fighter-itch.zip` and tick **“This file will be played in
+   the browser.”** (itch requires `index.html` at the zip root — this build has
+   it there.)
+3. **Embed options:** set a viewport around **960 × 600**, enable **Fullscreen
+   button**, and tick **Mobile friendly** (the UI is responsive).
+4. Save & view. That’s it — no other configuration needed.
+
+Notes: saves use `localStorage`, which works inside itch’s game iframe; if a
+visitor’s browser blocks third-party storage the game still plays fine, it just
+won’t persist between sessions (handled gracefully). On Windows without the
+`zip` CLI, just select `index.html`, `css/`, and `js/` and “Send to →
+Compressed (zipped) folder.”
+
 ## How to play
 
 1. **OPEN PACK** — spend coins to unlock a randomized fighter card. Rarer cards
