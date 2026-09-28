@@ -1,0 +1,71 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node -e 'const fs=require(\"fs\"),p=require(\"path\");let h={};try{h=JSON.parse(fs.readFileSync(0,\"utf8\")||\"{}\")}catch(e){}const U=process.env.RELAY_URL,K=process.env.RELAY_KEY;if(!U||!K||!h.hook_event_name)process.exit(0);const ti=h.tool_input||{},t=typeof h.tool_name==\"string\"?h.tool_name:null,f=ti.file_path||ti.notebook_path||ti.path||null,m=t&&/^mcp__(.+?)__/.exec(t);let d=p.resolve(h.cwd||\".\"),r=p.basename(d);for(let i=0;i<12;i++){if(fs.existsSync(p.join(d,\".git\"))){r=p.basename(d);break}const u=p.dirname(d);if(u==d)break;d=u}let role=process.env.FACTORY_ROLE||null;try{role=role||fs.readFileSync(\"/tmp/factory-role\",\"utf8\").trim()||null}catch(e){}const ev={t:Date.now(),session:String(h.session_id||\"\").slice(0,8),repo:role?\"factory-\"+role:r,event:h.hook_event_name,tool:t,server:m?m[1]:null,file:typeof f==\"string\"?p.basename(f):null,cmd:typeof ti.command==\"string\"?ti.command.trim().split(/\\s+/).slice(0,2).join(\" \").slice(0,40):null,subagent:typeof ti.subagent_type==\"string\"?ti.subagent_type:null,description:typeof ti.description==\"string\"?ti.description.slice(0,60):null};const c=new AbortController();setTimeout(()=>c.abort(),1500).unref();fetch(U.replace(/\\/$/,\"\")+\"/functions/v1/relay/event\",{method:\"POST\",headers:{\"content-type\":\"application/json\",\"x-relay-key\":K},body:JSON.stringify(ev),signal:c.signal}).catch(()=>{});' >/dev/null 2>&1 || true # neon-soup",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node -e 'const fs=require(\"fs\"),p=require(\"path\");let h={};try{h=JSON.parse(fs.readFileSync(0,\"utf8\")||\"{}\")}catch(e){}const U=process.env.RELAY_URL,K=process.env.RELAY_KEY;if(!U||!K||!h.hook_event_name)process.exit(0);const ti=h.tool_input||{},t=typeof h.tool_name==\"string\"?h.tool_name:null,f=ti.file_path||ti.notebook_path||ti.path||null,m=t&&/^mcp__(.+?)__/.exec(t);let d=p.resolve(h.cwd||\".\"),r=p.basename(d);for(let i=0;i<12;i++){if(fs.existsSync(p.join(d,\".git\"))){r=p.basename(d);break}const u=p.dirname(d);if(u==d)break;d=u}let role=process.env.FACTORY_ROLE||null;try{role=role||fs.readFileSync(\"/tmp/factory-role\",\"utf8\").trim()||null}catch(e){}const ev={t:Date.now(),session:String(h.session_id||\"\").slice(0,8),repo:role?\"factory-\"+role:r,event:h.hook_event_name,tool:t,server:m?m[1]:null,file:typeof f==\"string\"?p.basename(f):null,cmd:typeof ti.command==\"string\"?ti.command.trim().split(/\\s+/).slice(0,2).join(\" \").slice(0,40):null,subagent:typeof ti.subagent_type==\"string\"?ti.subagent_type:null,description:typeof ti.description==\"string\"?ti.description.slice(0,60):null};const c=new AbortController();setTimeout(()=>c.abort(),1500).unref();fetch(U.replace(/\\/$/,\"\")+\"/functions/v1/relay/event\",{method:\"POST\",headers:{\"content-type\":\"application/json\",\"x-relay-key\":K},body:JSON.stringify(ev),signal:c.signal}).catch(()=>{});' >/dev/null 2>&1 || true # neon-soup",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node -e 'const fs=require(\"fs\"),p=require(\"path\");let h={};try{h=JSON.parse(fs.readFileSync(0,\"utf8\")||\"{}\")}catch(e){}const U=process.env.RELAY_URL,K=process.env.RELAY_KEY;if(!U||!K||!h.hook_event_name)process.exit(0);const ti=h.tool_input||{},t=typeof h.tool_name==\"string\"?h.tool_name:null,f=ti.file_path||ti.notebook_path||ti.path||null,m=t&&/^mcp__(.+?)__/.exec(t);let d=p.resolve(h.cwd||\".\"),r=p.basename(d);for(let i=0;i<12;i++){if(fs.existsSync(p.join(d,\".git\"))){r=p.basename(d);break}const u=p.dirname(d);if(u==d)break;d=u}let role=process.env.FACTORY_ROLE||null;try{role=role||fs.readFileSync(\"/tmp/factory-role\",\"utf8\").trim()||null}catch(e){}const ev={t:Date.now(),session:String(h.session_id||\"\").slice(0,8),repo:role?\"factory-\"+role:r,event:h.hook_event_name,tool:t,server:m?m[1]:null,file:typeof f==\"string\"?p.basename(f):null,cmd:typeof ti.command==\"string\"?ti.command.trim().split(/\\s+/).slice(0,2).join(\" \").slice(0,40):null,subagent:typeof ti.subagent_type==\"string\"?ti.subagent_type:null,description:typeof ti.description==\"string\"?ti.description.slice(0,60):null};const c=new AbortController();setTimeout(()=>c.abort(),1500).unref();fetch(U.replace(/\\/$/,\"\")+\"/functions/v1/relay/event\",{method:\"POST\",headers:{\"content-type\":\"application/json\",\"x-relay-key\":K},body:JSON.stringify(ev),signal:c.signal}).catch(()=>{});' >/dev/null 2>&1 || true # neon-soup",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node -e 'const fs=require(\"fs\"),p=require(\"path\");let h={};try{h=JSON.parse(fs.readFileSync(0,\"utf8\")||\"{}\")}catch(e){}const U=process.env.RELAY_URL,K=process.env.RELAY_KEY;if(!U||!K||!h.hook_event_name)process.exit(0);const ti=h.tool_input||{},t=typeof h.tool_name==\"string\"?h.tool_name:null,f=ti.file_path||ti.notebook_path||ti.path||null,m=t&&/^mcp__(.+?)__/.exec(t);let d=p.resolve(h.cwd||\".\"),r=p.basename(d);for(let i=0;i<12;i++){if(fs.existsSync(p.join(d,\".git\"))){r=p.basename(d);break}const u=p.dirname(d);if(u==d)break;d=u}let role=process.env.FACTORY_ROLE||null;try{role=role||fs.readFileSync(\"/tmp/factory-role\",\"utf8\").trim()||null}catch(e){}const ev={t:Date.now(),session:String(h.session_id||\"\").slice(0,8),repo:role?\"factory-\"+role:r,event:h.hook_event_name,tool:t,server:m?m[1]:null,file:typeof f==\"string\"?p.basename(f):null,cmd:typeof ti.command==\"string\"?ti.command.trim().split(/\\s+/).slice(0,2).join(\" \").slice(0,40):null,subagent:typeof ti.subagent_type==\"string\"?ti.subagent_type:null,description:typeof ti.description==\"string\"?ti.description.slice(0,60):null};const c=new AbortController();setTimeout(()=>c.abort(),1500).unref();fetch(U.replace(/\\/$/,\"\")+\"/functions/v1/relay/event\",{method:\"POST\",headers:{\"content-type\":\"application/json\",\"x-relay-key\":K},body:JSON.stringify(ev),signal:c.signal}).catch(()=>{});' >/dev/null 2>&1 || true # neon-soup",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node -e 'const fs=require(\"fs\"),p=require(\"path\");let h={};try{h=JSON.parse(fs.readFileSync(0,\"utf8\")||\"{}\")}catch(e){}const U=process.env.RELAY_URL,K=process.env.RELAY_KEY;if(!U||!K||!h.hook_event_name)process.exit(0);const ti=h.tool_input||{},t=typeof h.tool_name==\"string\"?h.tool_name:null,f=ti.file_path||ti.notebook_path||ti.path||null,m=t&&/^mcp__(.+?)__/.exec(t);let d=p.resolve(h.cwd||\".\"),r=p.basename(d);for(let i=0;i<12;i++){if(fs.existsSync(p.join(d,\".git\"))){r=p.basename(d);break}const u=p.dirname(d);if(u==d)break;d=u}let role=process.env.FACTORY_ROLE||null;try{role=role||fs.readFileSync(\"/tmp/factory-role\",\"utf8\").trim()||null}catch(e){}const ev={t:Date.now(),session:String(h.session_id||\"\").slice(0,8),repo:role?\"factory-\"+role:r,event:h.hook_event_name,tool:t,server:m?m[1]:null,file:typeof f==\"string\"?p.basename(f):null,cmd:typeof ti.command==\"string\"?ti.command.trim().split(/\\s+/).slice(0,2).join(\" \").slice(0,40):null,subagent:typeof ti.subagent_type==\"string\"?ti.subagent_type:null,description:typeof ti.description==\"string\"?ti.description.slice(0,60):null};const c=new AbortController();setTimeout(()=>c.abort(),1500).unref();fetch(U.replace(/\\/$/,\"\")+\"/functions/v1/relay/event\",{method:\"POST\",headers:{\"content-type\":\"application/json\",\"x-relay-key\":K},body:JSON.stringify(ev),signal:c.signal}).catch(()=>{});' >/dev/null 2>&1 || true # neon-soup",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 node -e 'const fs=require(\"fs\"),p=require(\"path\");let h={};try{h=JSON.parse(fs.readFileSync(0,\"utf8\")||\"{}\")}catch(e){}const U=process.env.RELAY_URL,K=process.env.RELAY_KEY;if(!U||!K||!h.hook_event_name)process.exit(0);const ti=h.tool_input||{},t=typeof h.tool_name==\"string\"?h.tool_name:null,f=ti.file_path||ti.notebook_path||ti.path||null,m=t&&/^mcp__(.+?)__/.exec(t);let d=p.resolve(h.cwd||\".\"),r=p.basename(d);for(let i=0;i<12;i++){if(fs.existsSync(p.join(d,\".git\"))){r=p.basename(d);break}const u=p.dirname(d);if(u==d)break;d=u}let role=process.env.FACTORY_ROLE||null;try{role=role||fs.readFileSync(\"/tmp/factory-role\",\"utf8\").trim()||null}catch(e){}const ev={t:Date.now(),session:String(h.session_id||\"\").slice(0,8),repo:role?\"factory-\"+role:r,event:h.hook_event_name,tool:t,server:m?m[1]:null,file:typeof f==\"string\"?p.basename(f):null,cmd:typeof ti.command==\"string\"?ti.command.trim().split(/\\s+/).slice(0,2).join(\" \").slice(0,40):null,subagent:typeof ti.subagent_type==\"string\"?ti.subagent_type:null,description:typeof ti.description==\"string\"?ti.description.slice(0,60):null};const c=new AbortController();setTimeout(()=>c.abort(),1500).unref();fetch(U.replace(/\\/$/,\"\")+\"/functions/v1/relay/event\",{method:\"POST\",headers:{\"content-type\":\"application/json\",\"x-relay-key\":K},body:JSON.stringify(ev),signal:c.signal}).catch(()=>{});' >/dev/null 2>&1 || true # neon-soup",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
